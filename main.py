@@ -13,10 +13,10 @@ def main(stdscr):
     RED_AND_BLACK = curses.color_pair(3)
     YELLOW_AND_BLACK = curses.color_pair(4)
 
-    stdscr.clear()
+    
+    key = stdscr.getkey()
+    stdscr.addstr(10, 10, f"Key pressed: {key}")
     stdscr.refresh()
-    stdscr.nodelay(True)
-    stdscr.timeout(1000)
     stdscr.getch()
 
 
