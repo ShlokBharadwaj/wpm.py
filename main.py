@@ -16,10 +16,13 @@ def main(stdscr):
     win = curses.newwin(3, 18, 2, 2)
     box = Textbox(win)
     
-    rectangle(stdscr, 2, 2, 5, 20)
+    rectangle(stdscr, 1, 1, 5, 20)
     stdscr.refresh()
 
     box.edit()
+    text = box.gather().strip().replace("\n", "")
+
+    stdscr.addstr(10, 40 , text)
 
     stdscr.getch()
 
