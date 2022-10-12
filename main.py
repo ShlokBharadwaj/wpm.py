@@ -13,11 +13,14 @@ def main(stdscr):
     RED_AND_BLACK = curses.color_pair(3)
     YELLOW_AND_BLACK = curses.color_pair(4)
 
-    win = curses.newwin(18, 3, 2, 2)
+    win = curses.newwin(3, 18, 2, 2)
     box = Textbox(win)
     
     rectangle(stdscr, 2, 2, 5, 20)
     stdscr.refresh()
+
+    box.edit()
+
     stdscr.getch()
 
 wrapper(main)
