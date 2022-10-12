@@ -14,10 +14,21 @@ def main(stdscr):
     YELLOW_AND_BLACK = curses.color_pair(4)
 
     
-    key = stdscr.getkey()
-    stdscr.addstr(10, 10, f"Key pressed: {key}")
-    stdscr.refresh()
-    stdscr.getch()
+    x, y = 0, 0
+    while True: 
+        key = stdscr.getkey()
+        if key == 'KEY_UP':
+            y -= 1
+        elif key == 'KEY_DOWN':
+            y += 1
+        elif key == 'KEY_LEFT':
+            x -= 1
+        elif key == 'KEY_RIGHT':
+            x += 1
+
+        stdscr.clear()
+        stdscr.addstr(y, x, "0", curses.color_pair(4))
+        stdscr.refresh()
 
 
 wrapper(main)
