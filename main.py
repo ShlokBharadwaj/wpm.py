@@ -17,7 +17,9 @@ def main(stdscr):
             pad.addstr(char, YELLOW_AND_BLACK)
 
     for i in range(50):
-        pad.refresh(0, i, 5, 5, 25, 25)
+        stdscr.clear()
+        stdscr.refresh()
+        pad.refresh(0, 0, 5, i, 25, 25 + i)
         time.sleep(0.1)
     stdscr.getkey()
 
