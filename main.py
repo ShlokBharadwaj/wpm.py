@@ -1,5 +1,6 @@
 import curses
 from curses import wrapper
+import time
 
 def main(stdscr):
     curses.init_pair(1, curses.COLOR_RED, curses.COLOR_BLACK)
@@ -8,10 +9,12 @@ def main(stdscr):
     YELLOW_AND_BLACK = curses.color_pair(2)
 
 
-    stdscr.clear()
-    stdscr.addstr(0, 0, "Hello World!", RED_AND_BLACK)
-    stdscr.addstr(10, 10, "Hello World!", YELLOW_AND_BLACK | curses.A_BLINK)
-    stdscr.refresh()
+    for i in range(100):
+        stdscr.clear()
+        color = RED_AND_BLACK if i % 2 == 0 else YELLOW_AND_BLACK
+        stdscr.addstr(f"Count: {i}", color)
+        stdscr.refresh()
+        time.sleep(0.1)
     stdscr.getkey()
 
 wrapper(main)
