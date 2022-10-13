@@ -12,7 +12,7 @@ def main(stdscr):
     GREEN_AND_BLACK = curses.color_pair(2)
     RED_AND_BLACK = curses.color_pair(3)
     YELLOW_AND_BLACK = curses.color_pair(4)
-
+    curses.echo()
 
     stdscr.attron(RED_AND_BLACK)
     stdscr.border()
@@ -28,6 +28,9 @@ def main(stdscr):
     
     stdscr.refresh()
 
-    stdscr.getch()
+    while True:
+        key = stdscr.getkey()
+        if key == 'q':
+            break
 
 wrapper(main)
