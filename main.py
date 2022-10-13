@@ -40,10 +40,10 @@ def wpm_test(stdscr):
         if ord(key) == 27:
             break
 
-        if key in('KEY_BACKSPACE', '\b', '\x7f'):
+        if key in("KEY_BACKSPACE", '\b', "\x7f"):
             if len(current_text) > 0:
                 current_text.pop()
-        elif len(current_text) < len(target_text):
+        else:
             current_text.append(key)
 
 
@@ -64,7 +64,7 @@ def main(stdscr):
     BLUE_AND_BLACK = curses.color_pair(6)
     GREEN_AND_YELLOW = curses.color_pair(7)
     BLACK_AND_WHITE = curses.color_pair(8)
-    curses.echo()
+    # curses.echo()
 
     stdscr.attron(MAGNETA_AND_BLACK)
     start_screen(stdscr)
