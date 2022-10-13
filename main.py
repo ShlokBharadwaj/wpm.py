@@ -13,16 +13,15 @@ def main(stdscr):
     RED_AND_BLACK = curses.color_pair(3)
     YELLOW_AND_BLACK = curses.color_pair(4)
 
-    win = curses.newwin(3, 18, 2, 2)
-    box = Textbox(win)
+    stdscr.attron(GREEN_AND_BLACK)
+    rectangle(stdscr, 1, 1, 10, 10)
+    stdscr.addstr(5, 30, "Hello World!")
+    stdscr.attroff(GREEN_AND_BLACK)
+
     
-    rectangle(stdscr, 1, 1, 5, 20)
+    
+    
     stdscr.refresh()
-
-    box.edit()
-    text = box.gather().strip().replace("\n", "")
-
-    stdscr.addstr(10, 40 , text)
 
     stdscr.getch()
 
