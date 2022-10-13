@@ -13,6 +13,11 @@ def main(stdscr):
     RED_AND_BLACK = curses.color_pair(3)
     YELLOW_AND_BLACK = curses.color_pair(4)
 
+
+    stdscr.attron(RED_AND_BLACK)
+    stdscr.border()
+    stdscr.attroff(RED_AND_BLACK)
+
     stdscr.attron(GREEN_AND_BLACK)
     rectangle(stdscr, 1, 1, 10, 10)
     stdscr.addstr(5, 30, "Hello World!")
