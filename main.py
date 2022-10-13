@@ -2,6 +2,20 @@ import curses
 from curses import wrapper
 from curses.textpad import Textbox, rectangle
 import time
+import random
+from tracemalloc import start
+
+
+def start_screen(stdscr):
+    stdscr.clear()
+    stdscr.border()
+    stdscr.addstr(
+        curses.LINES // 2,
+        curses.COLS // 2 - len("Welcome to wpm.py! Press any key to start.") // 2,
+        "Welcome to wpm.py! Press any key to start.",
+        ),
+    stdscr.refresh()
+    stdscr.getkey()
 
 def main(stdscr):
     curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLACK)
@@ -24,8 +38,8 @@ def main(stdscr):
 
     stdscr.attron(MAGNETA_AND_BLACK)
     stdscr.border()
+    start_screen(stdscr)
     stdscr.attroff(MAGNETA_AND_BLACK)
     
-    stdscr.refresh()
-    stdscr.getkey()
 wrapper(main)
+
