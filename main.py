@@ -24,7 +24,7 @@ def main(stdscr):
     stdscr.attroff(GREEN_AND_BLACK)
 
     
-    
+    stdscr.move(30, 10)
     
     stdscr.refresh()
 
