@@ -17,6 +17,7 @@ def start_screen(stdscr):
     stdscr.getkey()
     
 def display_text(stdscr, target, current, wpm=0):
+    stdscr.border()
     stdscr.addstr(
         curses.LINES // 2,
         curses.COLS // 2 - len(target) // 2,
