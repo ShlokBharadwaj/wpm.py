@@ -25,7 +25,13 @@ def display_text(stdscr, target, current, wpm=0):
         ),
 
     for i, char in enumerate (current):
-            stdscr.addstr(curses.LINES // 2, (curses.COLS // 2 - len(target) // 2) + i, char, curses.color_pair(2))
+
+        correct_char = target[i]
+        color = curses.color_pair(2)
+        if char != correct_char:
+            color = curses.color_pair(3)
+
+        stdscr.addstr(curses.LINES // 2, (curses.COLS // 2 - len(target) // 2) + i, char, color)
 
 
 def wpm_test(stdscr):
