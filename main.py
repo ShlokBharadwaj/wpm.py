@@ -16,6 +16,11 @@ def start_screen(stdscr):
     stdscr.refresh()
     stdscr.getkey()
     
+def load_text():
+    with open("text.txt", "r") as f:
+        lines = f.readlines()
+        return random.choice(lines).strip()
+
 def display_text(stdscr, target, current, wpm=0):
     stdscr.border()
     stdscr.addstr(
@@ -39,7 +44,7 @@ def display_text(stdscr, target, current, wpm=0):
 
 
 def wpm_test(stdscr):
-    target_text = "hello world lets see how fast you can type this out"
+    target_text = load_text()
     current_text = []
     wpm = 0
     start_time = time.time()
