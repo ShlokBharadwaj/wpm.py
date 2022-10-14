@@ -95,9 +95,10 @@ def main(stdscr):
     start_screen(stdscr)
     while True:
         wpm_test(stdscr)
-        stdscr.addstr(curses.LINES // 2 + 2, curses.COLS // 2 - len("You have completed the text! Press escape key to exit.") // 2, "You have completed the text! Press escape key to exit.", curses.color_pair(5))
+        stdscr.addstr(curses.LINES // 2 + 2, curses.COLS // 2 - len("You have completed the text! Press Tab key to play again. Any other key to exit.") // 2, "You have completed the text! Press Tab key to play again. Any other key to exit.", curses.color_pair(5))
         key = stdscr.getkey()
-        if ord(key) == 27:
+        # tab to restart the game again.
+        if ord(key) != 9:
             break
     stdscr.attroff(curses.color_pair(4))
     
