@@ -27,7 +27,6 @@ def display_text(stdscr, target, current, wpm=0):
         curses.LINES // 2 - 2,
         curses.COLS // 2 - len(str(wpm)) // 2,
         f"WPM: {wpm}"),
-    stdscr.refresh()
 
     for i, char in enumerate (current):
 
@@ -44,18 +43,20 @@ def wpm_test(stdscr):
     current_text = []
     wpm = 0
     start_time = time.time()
-
+    stdscr.nodelay(True)
+ 
     while True:
         time_elapsed = max(time.time() - start_time, 1)
         wpm = round(len(current_text) / 5 / (time_elapsed / 60))
 
-        stdscr.clear()
-
+        stdscr.erase()
         display_text(stdscr, target_text, current_text, wpm)
+        # stdscr.refresh()
 
-        stdscr.refresh()
-
-        key = stdscr.getkey()
+        try:
+            key = stdscr.getkey()
+        except:
+            continue
 
         # Exit on escape button
         if ord(key) == 27:
@@ -85,7 +86,7 @@ def main(stdscr):
     BLUE_AND_BLACK = curses.color_pair(6)
     GREEN_AND_YELLOW = curses.color_pair(7)
     BLACK_AND_WHITE = curses.color_pair(8)
-    # curses.echo()
+    curses.echo()
 
     stdscr.attron(MAGNETA_AND_BLACK)
     start_screen(stdscr)
