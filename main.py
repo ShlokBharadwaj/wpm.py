@@ -26,7 +26,7 @@ def display_text(stdscr, target, current, wpm=0):
     stdscr.addstr(
         curses.LINES // 2 - 2,
         curses.COLS // 2 - len(str(wpm)) // 2,
-        f"WPM: {wpm}"),
+        f"WPM: {wpm}", curses.color_pair(1)),
 
     for i, char in enumerate (current):
 
@@ -50,8 +50,14 @@ def wpm_test(stdscr):
         wpm = round(len(current_text) / 5 / (time_elapsed / 60))
 
         stdscr.erase()
+        # stdscr.idcok(False)
+        # stdscr.idlok(False)
         display_text(stdscr, target_text, current_text, wpm)
-        # stdscr.refresh()
+        stdscr.refresh() 
+
+        if "".join(current_text) == target_text:
+            stdscr.nodelay(False)
+            break
 
         try:
             key = stdscr.getkey()
@@ -67,7 +73,6 @@ def wpm_test(stdscr):
                 current_text.pop()
         elif len(current_text) < len(target_text):
             current_text.append(key)
-
 
 def main(stdscr):
     curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLACK)
@@ -91,6 +96,8 @@ def main(stdscr):
     stdscr.attron(MAGNETA_AND_BLACK)
     start_screen(stdscr)
     wpm_test(stdscr)
+    stdscr.addstr(curses.LINES // 2 + 2, curses.COLS // 2 - len("You have completed the text! Press any key to exit.") // 2, "You have completed the text! Press any key to exit.", curses.color_pair(5))
+    stdscr.getkey()
     stdscr.attroff(MAGNETA_AND_BLACK)
     
 wrapper(main)
