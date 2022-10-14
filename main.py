@@ -23,6 +23,11 @@ def display_text(stdscr, target, current, wpm=0):
         curses.COLS // 2 - len(target) // 2,
         target,
         ),
+    stdscr.addstr(
+        curses.LINES // 2 - 2,
+        curses.COLS // 2 - len(str(wpm)) // 2,
+        f"WPM: {wpm}"),
+    stdscr.refresh()
 
     for i, char in enumerate (current):
 
@@ -37,11 +42,16 @@ def display_text(stdscr, target, current, wpm=0):
 def wpm_test(stdscr):
     target_text = "hello world lets see how fast you can type this out"
     current_text = []
+    wpm = 0
+    start_time = time.time()
 
     while True:
+        time_elapsed = max(time.time() - start_time, 1)
+        wpm = round(len(current_text) / 5 / (time_elapsed / 60))
+
         stdscr.clear()
 
-        display_text(stdscr, target_text, current_text)
+        display_text(stdscr, target_text, current_text, wpm)
 
         stdscr.refresh()
 
