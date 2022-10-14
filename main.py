@@ -16,6 +16,16 @@ def start_screen(stdscr):
     stdscr.refresh()
     stdscr.getkey()
     
+def display_text(stdscr, target, current, wpm=0):
+    stdscr.addstr(
+        curses.LINES // 2,
+        curses.COLS // 2 - len(target) // 2,
+        target,
+        ),
+
+    for i, char in enumerate (current):
+            stdscr.addstr(curses.LINES // 2, (curses.COLS // 2 - len(target) // 2) + i, char, curses.color_pair(2))
+
 
 def wpm_test(stdscr):
     target_text = "hello world lets see how fast you can type this out"
@@ -23,14 +33,8 @@ def wpm_test(stdscr):
 
     while True:
         stdscr.clear()
-        stdscr.addstr(
-        curses.LINES // 2,
-        curses.COLS // 2 - len(target_text) // 2,
-        target_text,
-        ),
 
-        for char in current_text:
-            stdscr.addstr(char, curses.color_pair(2))
+        display_text(stdscr, target_text, current_text)
 
         stdscr.refresh()
 
