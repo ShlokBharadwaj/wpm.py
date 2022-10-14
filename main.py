@@ -83,22 +83,18 @@ def main(stdscr):
     curses.init_pair(6, curses.COLOR_BLUE, curses.COLOR_BLACK)
     curses.init_pair(7, curses.COLOR_GREEN, curses.COLOR_YELLOW)
     curses.init_pair(8, curses.COLOR_BLACK, curses.COLOR_WHITE)
-    WHITE_AND_BLACK = curses.color_pair(1)
-    GREEN_AND_BLACK = curses.color_pair(2)
-    RED_AND_BLACK = curses.color_pair(3)
-    MAGNETA_AND_BLACK = curses.color_pair(4)
-    CYAN_AND_BLACK = curses.color_pair(5)
-    BLUE_AND_BLACK = curses.color_pair(6)
-    GREEN_AND_YELLOW = curses.color_pair(7)
-    BLACK_AND_WHITE = curses.color_pair(8)
+    curses.init_pair(9, curses.COLOR_YELLOW, curses.COLOR_BLACK)
     curses.echo()
 
-    stdscr.attron(MAGNETA_AND_BLACK)
+    stdscr.attron(curses.color_pair(4))
     start_screen(stdscr)
-    wpm_test(stdscr)
-    stdscr.addstr(curses.LINES // 2 + 2, curses.COLS // 2 - len("You have completed the text! Press any key to exit.") // 2, "You have completed the text! Press any key to exit.", curses.color_pair(5))
-    stdscr.getkey()
-    stdscr.attroff(MAGNETA_AND_BLACK)
+    while True:
+        wpm_test(stdscr)
+        stdscr.addstr(curses.LINES // 2 + 2, curses.COLS // 2 - len("You have completed the text! Press escape key to exit.") // 2, "You have completed the text! Press escape key to exit.", curses.color_pair(5))
+        key = stdscr.getkey()
+        if ord(key) == 27:
+            break
+    stdscr.attroff(curses.color_pair(4))
     
 wrapper(main)
 
