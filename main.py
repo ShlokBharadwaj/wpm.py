@@ -10,11 +10,13 @@ def start_screen(stdscr):
     stdscr.border()
     stdscr.addstr(
         curses.LINES // 2,
-        curses.COLS // 2 - len("Welcome to wpm.py! Press any key to start.") // 2,
-        "Welcome to wpm.py! Press any key to start.",
+        curses.COLS // 2 - len("Welcome to wpm.py! Press any key to start. Esc to exit") // 2,
+        "Welcome to wpm.py! Press any key to start. Esc to exit",
         ),
     stdscr.refresh()
-    stdscr.getkey()
+    key = stdscr.getkey()
+    if ord(key) == 27:
+        exit()
     
 def load_text():
     with open("text.txt", "r") as f:
@@ -103,4 +105,3 @@ def main(stdscr):
     stdscr.attroff(curses.color_pair(4))
     
 wrapper(main)
-
