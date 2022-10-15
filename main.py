@@ -75,6 +75,11 @@ def wpm_test(stdscr):
         if ord(key) == 27:
             break
 
+        # Backspace
+        # if ord(key) == 263:
+        #     if len(current_text) > 0:
+        #         current_text.pop() 
+
         if key in("KEY_BACKSPACE", '\b', "\x7f"):
             if len(current_text) > 0:
                 current_text.pop()
