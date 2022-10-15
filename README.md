@@ -1,7 +1,8 @@
 # wpm.py
 Simple cli typing game written in Python.
 
-[![](https://github.com/ShlokBharadwaj/wpm.py/blob/master/wpm.webm?raw=true)](https://github.com/ShlokBharadwaj/wpm.py)
+[wpm.webm](https://user-images.githubusercontent.com/79036875/195963242-7ee9fcf2-103a-4a4f-9193-9c9796bdd853.webm)
+
 # About
 
 _wpm.py_ is minimalistic typing test based on user provided exercising text. It is written in Python and uses the [curses](https://docs.python.org/3/howto/curses.html) library for the UI.
@@ -21,7 +22,6 @@ _wpm.py_ uses curses module which is a part of the standard library. However, it
 _wpm.py_ can be run by executing the following command:
 
     python3 wpm.py
-
 
 I personally use alias:
 
