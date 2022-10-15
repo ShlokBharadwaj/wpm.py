@@ -76,7 +76,7 @@ def wpm_test(stdscr):
             break
 
         # Backspace
-        # if ord(key) == 263:
+        # if ord(key) == 263 or ord(key) == 127:
         #     if len(current_text) > 0:
         #         current_text.pop() 
 
